@@ -156,7 +156,6 @@ func main() {
 	mq := NewMockMQ(100, &wg)
 	engine := NewDeliveryEngine(mq)
 
-	// 修正点：这里的参数必须是 *http.Request
 	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// 模拟 1/3 的概率返回 500 错误
 		if time.Now().UnixNano()%3 == 0 {
